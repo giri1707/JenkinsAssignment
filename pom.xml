@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.compugain.apps</groupId>
   <artifactId>JenkinsAssignment</artifactId>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
   <version>1.0</version>
   <name>JenkinsAssignment Maven Webapp</name>
   <url>http://maven.apache.org</url>
