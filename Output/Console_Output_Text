@@ -1,0 +1,98 @@
+Started by user Giridhar Raju
+[Pipeline] node
+Running on master in C:\Jenkins\workspace\Test
+[Pipeline] {
+[Pipeline] readFile
+[Pipeline] echo
+Building version 1.0
+[Pipeline] readFile
+[Pipeline] echo
+Building App JenkinsAssignment
+[Pipeline] stage
+[Pipeline] { (checkout source code)
+[Pipeline] git
+Fetching changes from the remote Git repository
+Checking out Revision 34530ff57908e8e1e2e6213df1fb6ca56c71f9f9 (refs/remotes/origin/master)
+[Pipeline] tool
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build JenkinsAssignment and version 1.0)
+[Pipeline] isUnix
+[Pipeline] bat
+[Test] Running batch script
+
+C:\Jenkins\workspace\Test>"C:\Jenkins\tools\hudson.tasks.Maven_MavenInstallation\M3\bin\mvn" -Dmaven.test.failure.ignore clean package 
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.compugain.apps:JenkinsAssignment:war:1.0
+[WARNING] 'build.plugins.plugin.version' for org.mortbay.jetty:maven-jetty-plugin is missing. @ line 41, column 15
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building JenkinsAssignment Maven Webapp 1.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ JenkinsAssignment ---
+[INFO] Deleting C:\Jenkins\workspace\Test\target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ JenkinsAssignment ---
+[WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory C:\Jenkins\workspace\Test\src\main\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ JenkinsAssignment ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding Cp1252, i.e. build is platform dependent!
+[INFO] Compiling 1 source file to C:\Jenkins\workspace\Test\target\classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ JenkinsAssignment ---
+[WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory C:\Jenkins\workspace\Test\src\test\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ JenkinsAssignment ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ JenkinsAssignment ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-war-plugin:2.2:war (default-war) @ JenkinsAssignment ---
+[INFO] Packaging webapp
+[INFO] Assembling webapp [JenkinsAssignment] in [C:\Jenkins\workspace\Test\target\JenkinsAssignment]
+[INFO] Processing war project
+[INFO] Copying webapp resources [C:\Jenkins\workspace\Test\src\main\webapp]
+[INFO] Webapp assembled in [199 msecs]
+[INFO] Building war: C:\Jenkins\workspace\Test\target\JenkinsAssignment.war
+[INFO] WEB-INF\web.xml already added, skipping
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 12.247 s
+[INFO] Finished at: 2016-09-23T09:52:14-04:00
+[INFO] Final Memory: 15M/115M
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Awaiting for approval for deploying JenkinsAssignment and Version 1.0)
+[Pipeline] timeout
+[Pipeline] {
+[Pipeline] input
+Awaiting approval for deploying JenkinsAssignment and version 1.0. Are you ready to deploy?
+Deploy or Abort
+Approved by Giridhar Raju
+[Pipeline] }
+[Pipeline] // timeout
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage (Deploying JenkinsAssignment and version 1.0)
+Using the ?stage? step without a block argument is deprecated
+Entering stage Deploying JenkinsAssignment and version 1.0
+Proceeding
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
