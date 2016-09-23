@@ -1,0 +1,40 @@
+node {
+    def v = version()
+      if (v) {
+          echo "Building version ${v}"
+      }
+    def app = appName()
+      if (app) {
+          echo "Building App ${app}"
+      }
+   def mvnHome
+   stage('checkout source code') { 
+      // Checking out source code from a GitHub repository
+      git 'https://github.com/giri1707/JenkinsAssignment.git'
+           
+      mvnHome = tool 'M3'
+   }
+   stage("Build ${app} and version ${v}") {
+      // Run the maven build
+      if (isUnix()) {
+         sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+      } else {
+         bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
+      }
+   }
+   stage("Awaiting for approval for deploying ${app} and Version ${v}"){
+       timeout(time:5, unit:'MINUTES') {
+           input message:"Awaiting approval for deploying ${app} and version ${v}. Are you ready to deploy?", ok: 'Deploy'
+       }
+   }
+   stage("Deploying ${app} and version ${v}") 
+}
+
+def version() {
+    def ver = readFile('pom.xml') =~ '<version>(.+)</version>'
+    ver ? ver[0][1] : null
+}
+def appName() {
+    def app1 = readFile('pom.xml') =~ '<artifactId>(.+)</artifactId>'
+    app1 ? app1[0][1] : null
+}
