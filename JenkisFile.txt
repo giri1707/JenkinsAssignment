@@ -1,0 +1,3 @@
+node("Master"){
+echo "Im in jenkins file"
+}
